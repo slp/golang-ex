@@ -62,14 +62,6 @@ Nb5Vh78f5HFpEOSYRN9u7jd+XtbuT7nxvc8Ic9PNxKHuugYQr5E=
 `
 
 func helloHandler(w http.ResponseWriter, r *http.Request) {
-	user, pass, ok := r.BasicAuth()
-	if !ok || user != "admindemo" || pass != "password" {
-		w.Header().Set("WWW-Authenticate", `Basic realm="Please enter your credentials"`)
-		w.WriteHeader(401)
-		w.Write([]byte("Unauthorised.\n"))
-		return
-	}
-
 	response := os.Getenv("RESPONSE")
 
 	if len(response) == 0 {
